@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let lines = 0;
   let speed = 1000;
 
-  const colors = ["red", "aqua", "blue", "green", "purple"];
+  const colors = ["red", "aqua", "black", "green", "purple"];
 
   //The tetrominos
   const lTetromino = [
