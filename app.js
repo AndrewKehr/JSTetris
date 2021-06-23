@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId = null
     let score = 0
     let lines = 0
+    let speed = 1000
 
 //The tetrominos
     const lTetromino = [
@@ -86,7 +87,7 @@ function control(e) {
     }
 }
 
-document.addEventListener('keyup', control)
+document.addEventListener('keydown', control)
 
 //move down function
 function moveDown() {
@@ -179,7 +180,7 @@ startBtn.addEventListener('click', () => {
         timerId = null
     } else {
         draw()
-        timerId = setInterval(moveDown, 200)
+        timerId = setInterval(moveDown, speed)
         nextRandom = Math.floor(Math.random()*theTetrominos.length)
         displayShape()
     }
@@ -194,6 +195,8 @@ function addScore() {
             lines += 1
             linesDisplay.innerHTML = lines
             scoreDisplay.innerHTML = score
+            speed -= 5
+            timerId = setInterval(moveDown, speed)
             row.forEach(index => {
                 squares[index].classList.remove('taken')
                 squares[index].classList.remove('tetromino')
@@ -210,6 +213,7 @@ function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         scoreDisplay.innerHTML = 'Game Over'
         clearInterval(timerId)
+        window.location.href = "gameoverpage.html"
     }
 } 
 
