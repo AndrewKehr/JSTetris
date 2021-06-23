@@ -26,6 +26,7 @@ button {
 
 .tetromino {
     color:white;
+    outline:solid;
 }
 
 .mini-grid {
